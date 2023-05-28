@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+    <style>
+        .bcg{
+            background: url(https://cdn-blob.austria.info/cms-uploads-prod/default/0001/05/thumb_4396_default_header_big.jpeg) no-repeat;
+            width:1536px;
+            height:550px;
+        }
+        .welcome{
+            top:45px;
+            font-style:italic;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+<header th:insert="basicpages/header::header"></header>
+<table>
+    <tr>
+        <td>
+            <p th:text="'Here is UserList -> '"/>
+        </td>
+        <td>
+            <a href="/user/list">UserList</a>
+        </td>
+</tr>
+    <tr>
+        <td>
+            <p th:text="'Here is StuffList -> '"/>
+        </td>
+        <td>
+            <a href="/stuff/list">StuffList</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <p th:text="'Добавить вещи -> '"/>
+        </td>
+        <td>
+            <a href="/stuff/add">Добавить</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <p th:text="'Here is GroupList -> '"/>
+        </td>
+        <td>
+            <a href="/groups/list">GroupsList</a>
+        </td>
+    </tr>
+
+</table>
+
+
+
+</body>
+</html>

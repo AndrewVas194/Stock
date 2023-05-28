@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <form method="get" action="/user/{userId}/stuff">
+        <label>User ID:</label>
+        <input type="text" id="showUserStuff" name="showUserStuff" th:value="${userId}" />
+        <button type="submit">Найти</button> <button type="reset">Отменить</button>
+        <span class="back"><a href="/stuff/list">Вернуться</a></span>
+    </form>
+
+
+    <form method="get" action="gender">
+        <select type="text" name="filter" id="filter" placeholder="Пол">
+            <option hidden>Пол</option>
+            <option name="MALE" value="Мужской">Мужской</option>
+            <option name="FEMALE" value="Женский">Женский</option>
+            <option name="UNISEX" value="Унисекс">Унисекс</option>
+        </select>
+        <button type="submit">Найти</button> <button type="reset">Отменить</button>
+        <span class="back"><a href="/stuff/list">Вернуться</a></span>
+    </form>
+
+<table th:each= "stuffEl : ${stuffs}">
+    <thead>
+    <tr>
+        <th>Stuff Id</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Категория</th>
+        <th>Пол</th>
+        <th>Возраст</th>
+        <th>Статус</th>
+        <th>Состояние</th>
+        <th>Владелец</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffId"><h3 th:text="${stuffEl.id}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffName"><h3 th:text="${stuffEl.name}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffDescription"><h3 th:text="${stuffEl.description}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffCategory"><h3 th:text="${stuffEl.category}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffGender"><h3 th:text="${stuffEl.gender}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffAge"><h3 th:text="${stuffEl.age}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffStatus"><h3 th:text="${stuffEl.status}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffConditional"><h3 th:text="${stuffEl.conditional}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="stuffUser"><h3 th:text="${stuffEl.user.name}"/></td>
+
+    </tr>
+    </tbody>
+</table>
+<p th:text="'Добавить вещь'"/> <a href="/stuff/add">StuffAdd</a>
+    <p th:value="'На главную страницу->'"><a href="/">На главную</a></p>
+
+</body>
+</html>

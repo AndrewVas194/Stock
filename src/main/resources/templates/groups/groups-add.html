@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form action="/groups/add" method="post">
+  <input type="text" name="groupsName" id="groupsName" placeholder="Название" class="form-control"required><br>
+  <button type="submit" class="btn btn-success">Добавить группу</button>
+</form>
+
+<p th:value="'На главную страницу->'"><a href="/">На главную</a></p>
+
+</body>
+</html>

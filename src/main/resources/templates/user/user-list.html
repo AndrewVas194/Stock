@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<form method="get" action="name">
+    <input type="hidden" name="_method" value="search"/>
+    <input type="text" id="name" name="name"/>
+    <button type="submit">Найти</button> <button type="reset">Отменить</button>
+    <span class="back"><a href="/user/list">Вернуться</a></span>
+</form>
+
+<form method="get" action="email">
+    <input type="hidden" name="_method" value="search"/>
+    <input type="text" id="email" name="email"/>
+    <button type="submit">Найти</button> <button type="reset">Отменить</button>
+    <span class="back"><a href="/user/list">Вернуться</a></span>
+</form>
+
+<form method="get" action="active">
+    <select type="text" name="active" id="active" placeholder="Активность">
+        <option hidden>Активность аккаунтов</option>
+        <option value="true">Активные</option>
+        <option value="false">Отключены</option>
+    </select>
+    <button type="submit">Найти</button> <button type="reset">Отменить</button>
+    <span class="back"><a href="/user/list">Вернуться</a></span>
+</form>
+
+<table style="border-radius:5px; border: 1px solid; color: black" th:each="uselement : ${users}" class="product-item alert alert-info mt-2">
+    <thead>
+    <tr>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tr>
+        <td align="center" style="border-radius:5px; border: 1px solid; color: black" class="userId"><h3 th:text="${uselement.id}"/></td>
+        <td style="border-radius:5px; border: 1px solid; color: black" class="userName"><h3 th:text="${uselement.name}"/></td>
+      <td style="border-radius:5px; border: 1px solid; color: black" class="userSurName"><h3 th:text="${uselement.surname}"/></td>
+      <td style="border-radius:5px; border: 1px solid; color: black" class="userPhone"><h3 th:text=" ${uselement.phone}"/></td>
+      <td style="border-radius:5px; border: 1px solid; color: black" class="userEmail"><h3 th:text="${uselement.email}"/></td>
+        <td>
+            <form th:action="'/user/'+${uselement.id}" method="get">
+                <input type="hidden" name="_method" value="transition"/>
+                <button type="submit">Перейти в личный кабинет</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/user/'+'turnOff/'+ ${uselement.id}" method="get">
+                <input type="hidden" name="_method" value="off"/>
+                <button type="submit">Отключить</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/user/'+'delete/'+ ${uselement.id}" method="get">
+                <input type="hidden" name="_method" value="delete"/>
+            <button type="submit">Удалить</button>
+            </form>
+        </td>
+
+    </tr>
+
+</table>
+<!--
+<p th:value="'Добавить пользователя можно тут ->'"><a href="/user/add">Add User</a></p>
+-->
+<p th:value="'На главную страницу->'"><a href="/">На главную</a></p>
+</body>
+</html>

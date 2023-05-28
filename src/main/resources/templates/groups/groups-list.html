@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table th:each= "groupsListEl : ${groups}">
+  <thead>
+  <tr>
+    <th>Название</th>
+    <th>Количество участников</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="groupsName"><h3 th:text="${groupsListEl.name}"/></td>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="groupsCount_members"><h3 th:text="${groupsListEl.getMemberGroup().size()}"/></td>
+    <td>
+      <form th:action="'/groups/'+${groupsListEl.id}+'/addMember'" method="post">
+        <input type="hidden" id="groupId" name="groupId" th:value="${groupsListEl.id}" />
+        <input type="hidden" id="groupRole" name="groupRole" th:value="${MEMBER}" />
+        <button type="submit">Присоединиться</button>
+      </form>
+    </td>
+
+    <td>
+      <form th:action="'/groups/'+${groupsListEl.id}+'/members'">
+      <button>Войти в группу</button>
+      </form>
+    </td>
+
+    <td>
+      <form th:action="'/groups/'+'delete/'+ ${groupsListEl.id}" method="get">
+        <input type="hidden" name="_method" value="delete"/>
+        <button type="submit">Удалить</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p><a href="/groups/add">Добавить группу</a></p>
+<p><a href="/">На главную</a></p>
+
+
+</body>
+</html>

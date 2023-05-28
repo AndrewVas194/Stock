@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form action="/user/add" method="post">
+        <input type="text" name="userLogin" id="userLogin" placeholder="Логин" class="form-control"required><br>
+        <input type="text" name="userPassword" id="userPassword" placeholder="Пароль" class="form-control"required><br>
+        <input type="text" name="userName" id="userName" placeholder="Имя пользователя" class="form-control"required><br>
+        <input type="text" name="userSurName" id="userSurName" placeholder="Фамилия пользователя" class="form-control"required><br>
+        <input type="text" name="userPhone" id="userPhone" placeholder="Телефон пользователя" class="form-control"required><br>
+        <input type="text" name="userEmail" id="userEmail" placeholder="Почта пользователя" class="form-control"required><br>
+        <button type="submit" class="btn btn-success">Добавить пользователя</button>
+    </form>
+    <p th:value="'На главную страницу->'"><a href="/">На главную</a></p>
+
+</body>
+</html>

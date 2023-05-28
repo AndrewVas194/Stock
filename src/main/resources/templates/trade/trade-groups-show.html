@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table th:each="stuffEl: ${stuffList}">
+        <thead>
+        <tr>
+            <th>Stuff Id</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Категория</th>
+            <th>Пол</th>
+            <th>Возраст</th>
+            <th>Статус</th>
+            <th>Состояние</th>
+            <th>Владелец</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffId"><h3 th:text="${stuffEl.id}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffName"><h3 th:text="${stuffEl.name}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffDescription"><h3 th:text="${stuffEl.description}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffCategory"><h3 th:text="${stuffEl.category}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffGender"><h3 th:text="${stuffEl.gender}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffAge"><h3 th:text="${stuffEl.age}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffStatus"><h3 th:text="${stuffEl.status}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffConditional"><h3 th:text="${stuffEl.conditional}"/></td>
+            <td style="border-radius:5px; border: 1px solid; color: black" class="stuffUser"><h3 th:text="${stuffEl.user.name}"/></td>
+            <td>
+                <form th:action="'/trade/'+'groups/'+${groupId}+'/'+${user2Id}+'/'+${stuffEl.id}" method="post">
+                    <input type="hidden" name="groupId" value="{groupId}">
+                    <input type="hidden" name="user2Id" value="{user2Id}">
+                    <input type="hidden" name="stuffId" value="{stuffId}">
+                <button type="submit">Perform Trade</button>
+            </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form action="/stuff/add" method="post">
+    <input type="text" name="stuffName" id="stuffName" placeholder="Название" class="form-control"required><br>
+    <textarea type="text"name="stuffDescription" id="stuffDescription" placeholder="Описание" class="form-control"required></textarea><br>
+
+    <select type="text" name="stuffCategory" id="stuffCategory" placeholder="Категория" required>
+        <option hidden>Категория</option>
+        <option name="Winter_clothes" value="Зимняя_Одежда">Зимняя_Одежда</option>
+        <option name="Summer_clothes" value="Летняя_Одежда">Летняя_Одежда</option>
+        <option name="Walking_things" value="Прогулочные_Вещи">Прогулочные_Вещи</option>
+        <option name="Home_things" value="Домашния_Вещи">Домашния_Вещи</option>
+    </select><br>
+
+    <select type="text" name="stuffGender" id="stuffGender" placeholder="Пол" required>
+        <option hidden>Пол</option>
+        <option name="MALE" value="Мужской">Мужской</option>
+        <option name="FEMALE" value="Женский">Женский</option>
+        <option name="UNISEX" value="Унисекс">Унисекс</option>
+    </select><br>
+
+   <input type="number" name="stuffAge" id="stuffAge" placeholder="Для каких возрастов" class="form-control"required><br>
+
+    <select type="text" name="stuffConditional" id="stuffConditional" placeholder="Состояние">
+        <option hidden>Состояние</option>
+        <option name="NEW" value="Новое">Новое</option>
+        <option name="PREVIOUSLY_USED" value="Б_У">Б_У</option>
+    </select><br>
+    <button type="submit" class="btn btn-success">Добавить вещь</button>
+</form>
+<p th:value="'На главную страницу->'"><a href="/">На главную</a></p>
+
+</body>
+</html>

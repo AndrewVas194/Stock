@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Удаление объекта</title>
+</head>
+<body>
+<h1>Вы уверены, что хотите удалить пользователя?</h1>
+<p>Идентификатор объекта: <span th:text="${id}"></span></p>
+<form method="post" th:action="${id}">
+  <input type="hidden" name="_method" value="delete"/>
+  <button type="submit">Да, удалить</button>
+</form>
+<a href="javascript:history.back()">Нет, вернуться назад</a>
+</body>
+</html>

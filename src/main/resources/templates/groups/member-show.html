@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Members in Group</title>
+</head>
+<body>
+<h1>Members in Group</h1>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Email</th>
+        <th>Stuffs</th>
+    </tr>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.user.username}"></td>
+        <td th:text="${member.user.name}"></td>
+        <td th:text="${member.grRole}"></td>
+        <td th:text="${member.user.email}"></td>
+        <td>
+            <ul>
+                <li th:each="stuff : ${member.user.stuffList}" th:text="${stuff.name + ' (' + stuff.status + ')'}"></li>
+            </ul>
+        </td>
+        <td>
+            <form th:action="'/trade'+'/groups/'+${groupId}+'/'+${member.getUser().id}" method="get" >
+                <input type="hidden" name="_method" value="get">
+                <button type="submit">Предложить обмен</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/groups/'+${groupId}+'/members/'+'delete/'+${member.getUser().id}" method="get" >
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<a href="/">Вернуться</a>
+</body>
+</html>

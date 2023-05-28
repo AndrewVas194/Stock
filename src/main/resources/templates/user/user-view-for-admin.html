@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Stuff View</title>
+</head>
+<body>
+<h1>User Stuff View</h1>
+<p>User ID: <span th:text="${user.id}"></span></p>
+<p>User Name: <span th:text="${user.name}"></span></p>
+<h2>Stuff List:</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Status</th>
+    <th>Conditional</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Используем Thymeleaf для итерации по списку вещей пользователя -->
+  <tr th:each="stuffEl : ${stuffList}">
+    <td style="border-radius:5px; border: 1px solid; color: black" class="stuffName"><h3 th:text="${stuffEl.name}"/></td>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="stuffDescription"><h3 th:text="${stuffEl.description}"/></td>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="stuffCategory"><h3 th:text="${stuffEl.category}"/></td>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="stuffGender"><h3 th:text="${stuffEl.gender}"/></td>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="stuffAge"><h3 th:text="${stuffEl.age}"/></td>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="stuffStatus"><h3 th:text="${stuffEl.status}"/></td>
+    <td style="border-radius:5px; border: 1px solid; color: black" class="stuffConditional"><h3 th:text="${stuffEl.conditional}"/></td>
+    <!--<td>
+      <form th:action="'/stuff/'+'delete/'+${stuffEl.id}" method="get">
+        <input type="hidden" name="_method" value="delete"/>
+        <button type="submit">Удалить</button>
+      </form>
+    </td>-->
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

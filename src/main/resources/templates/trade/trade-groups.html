@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Trade</title>
+</head>
+<body>
+<h1>Trade</h1>
+
+<form th:action="'/trade'+'/groups/'+${groupId}+'/'+${user2Id}+'/'+${stuffId}" method="post">
+  <input type="hidden" name="groupId" value="{groupId}">
+  <input type="hidden" name="user2Id" value="{user2Id}">
+  <input type="hidden" name="stuffId" value="{stuffId}">
+  <button type="submit">Perform Trade</button>
+</form>
+
+</body>
+</html>
